@@ -1,6 +1,18 @@
 <h2>Liste des burgers</h2>
-<ul class="burgers">
-  <li *ngFor="let burger of burgers">
-    <span class="badge">{{burger.id}}</span> {{burger.name}}
-  </li>
-</ul>
+  <mat-grid-list cols="6" rowHeight="200px">
+    <mat-grid-tile [colspan]="2" [rowspan]="3" *ngFor="let burger of burgers">
+      <mat-card class="card-list-burger">
+        <mat-card-header>
+          <div mat-card-avatar></div>
+          <mat-card-title>{{burger.name}}</mat-card-title>
+        </mat-card-header>
+        <img mat-card-image src="{{burger.image}}">
+        <mat-card-content>
+          <p>{{burger.price}} €</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <a mat-stroked-button routerLink="burger/{{burger.id}}">Détails du burger</a>
+        </mat-card-actions>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
