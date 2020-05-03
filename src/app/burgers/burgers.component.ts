@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Burger } from '../burger';
+import { Burger } from '../../typescript-angular-client-generated';
+import { BurgersService } from '../../typescript-angular-client-generated';
 
 @Component({
   selector: 'app-burgers',
@@ -7,16 +8,14 @@ import { Burger } from '../burger';
   styleUrls: ['./burgers.component.scss']
 })
 export class BurgersComponent implements OnInit {
-  burger: Burger = {
-    id: 1,
-    name: 'BigMac',
-    price: 12,
-    image: 'image'
-  };
+  burgers: Burger[];
 
-  constructor() { }
+  constructor(private burgersService: BurgersService) { }
 
   ngOnInit() {
+    this.getBurgers();
   }
-
+  getBurgers(): void {
+    this.burgersService.listBurgers()
+      .subscribe(burgers => this.burgers = burgers);  }
 }

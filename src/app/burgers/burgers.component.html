@@ -1,1 +1,6 @@
-{{burger}}
+<h2>Liste des burgers</h2>
+<ul class="burgers">
+  <li *ngFor="let burger of burgers">
+    <span class="badge">{{burger.id}}</span> {{burger.name}}
+  </li>
+</ul>
